@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.spring.model.TipologiaIntervento;
+import it.uniroma3.siw.spring.controller.validator.TipologiaInterventoValidator;
 import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.Intervento;
 import it.uniroma3.siw.spring.service.TipologiaInterventoService;

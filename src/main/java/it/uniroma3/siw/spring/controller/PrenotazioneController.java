@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import it.uniroma3.siw.spring.controller.validator.PrenotazioneValidator;
 import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.Intervento;
 import it.uniroma3.siw.spring.model.Meccanico;
@@ -44,11 +44,14 @@ public class PrenotazioneController {
     @RequestMapping(value = "/prenotazione/{id}", method = RequestMethod.GET)
     public String getPrenotazione(@PathVariable("id") Long id, Model model) {
     	Prenotazione p=prenotazioneService.prenotazionePerId(id);
-    	model.addAttribute("prenotazione", p);
-    	model.addAttribute("intervento",p.getIntervento());
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = this.prenotazioneService.getCredentialsService().getCredentials(userDetails.getUsername());
-    	model.addAttribute("credentials", credentials);
+    	if(p.getCliente()==credentials.getUser()) {
+    		model.addAttribute("prenotazione", p);
+    		model.addAttribute("intervento",p.getIntervento());
+    		model.addAttribute("credentials", credentials);
+    		}
+   
     	return "prenotazione.html";
     }   
     

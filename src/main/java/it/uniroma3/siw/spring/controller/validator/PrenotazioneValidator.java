@@ -1,4 +1,4 @@
-package it.uniroma3.siw.spring.controller;
+package it.uniroma3.siw.spring.controller.validator;
 
 
 import org.slf4j.Logger;
