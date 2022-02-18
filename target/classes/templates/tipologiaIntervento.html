@@ -2,14 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<link th:href="@{/css/basic.css}" rel="stylesheet">
 <body>
-	<nav><p class="titolo">OFFCINE ROMA</p></nav>
+	<nav><p class="titolo">OFFICINA MONTEVERDE</p></nav>
     <div style="display: flex; justify-content: center;" >
-    	<div class="box" style="background-color: khaki" th:if="${tipologiaIntervento}" th:object="${tipologiaIntervento}">
+    	<div class="box" style="background-color: yellow" th:if="${tipologiaIntervento}" th:object="${tipologiaIntervento}">
 		<p><b>TIPOLOGIA INTERVENTO:</b></p>
 			Nome: <span th:text="*{nome}">qui-va-nome</span><br>
 			Descrizione: <span th:text="*{descrizione}">qui-va-descrizione</span><br>
    		</div>
-		<div class="box" style="background-color: powderblue;">
+		<div class="box" style="background-color: yellow;">
 			<p><b>GLI INTERVENTI:</b></p>
 			<ul>
 				<li th:each="intervento : ${interventiTipologiaIntervento}">
@@ -21,7 +21,7 @@
 			</ul>
 		</div>
 		<br>
-		<div class="box" style="background-color: lightcoral;" th:if="${credentials.role == 'ADMIN'}">
+		<div class="box" style="background-color: yellow;" th:if="${credentials.role == 'ADMIN'}">
 			<div>
 				<p><b>AGGIUNGI INTERVENTO A LISTA DI INTERVENTI</b></p>
 				<form th:action="@{'/admin/addInterventoATipologiaIntervento' + '/' + ${tipologiaIntervento.id}}" method="POST" >

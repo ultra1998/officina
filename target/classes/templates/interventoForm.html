@@ -8,10 +8,10 @@
 
 <body>
 	<nav>
-		<p class="titolo">OFFCINE ROMA</p>
+		<p class="titolo">OFFICINA MONTEVERDE</p>
 	</nav>
 	<form th:action="@{/admin/intervento}" method="POST" th:object="${intervento}">
-		<h4 class="nome">Inserisci i dati di un intervento</h4>
+		<h4 class="titolo">Inserisci i dati di un intervento</h4>
 		<div th:if="${#fields.hasGlobalErrors()}">
 			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>

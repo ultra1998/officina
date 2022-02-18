@@ -12,6 +12,14 @@
 
         <form th:action="@{/register}" method="POST">
             <h4 class="titolo">Registrazione</h4>
+            <style>
+		      html {
+			   background-image: url('/images/backgroundloginoff.jpg');
+			   background-repeat: no-repeat;
+			   background-attachment: fixed;
+			   background-size: 100% 100%;
+		      }
+	        </style>
             <table class="input-div">
                 <tr class="input-div">
                     <td class="campo-form">Username</td>
@@ -42,12 +50,12 @@
                 </tr>
             </table>
             <div>
-                        <button class="sub-button" type="submit"th:text="#{index.register}">Registra</button>
-                        <span><button type="reset" class="sub-button"th:text="#{cancella}">Cancella</button></span>
+                        <button class="sub-button" style="color: white; background-color: black;" type="submit"th:text="#{index.register}">Registra</button>
+                        <span><button type="reset" class="sub-button" style="color: white; background-color: black;" th:text="#{cancella}">Cancella</button></span>
 						
                     </div>
         </form>
-        <span><a href="/index"><button class="sub-button"th:text="#{indietro}">Home</button></a></span>
+        <span><a href="/index"><button class="sub-button" style="color: white; background-color: black;" th:text="#{indietro}">Home</button></a></span>
     </div>
 </body>
 

@@ -13,31 +13,31 @@
         <div>
             <span th:if="${credentials.role == 'ADMIN'}">
                 <a href="/admin/adminPanel">
-                    <button class="button" style="background-color:gold ;box-shadow:0 9px goldenrod;" th:text="#{pannello}" >Admin Panel</button>
+                    <button class="button" style="background-color:red;box-shadow:0 9px darkred;" th:text="#{pannello}" >Admin Panel</button>
                 </a>
             </span>
         </div>
         <div>
             <a href="meccanico">
-                <button class="button" style="background-color: crimson;box-shadow: 0 9px darkred;" th:text="#{elenco.meccanici}">Elenco meccanici </button> </a>
+                <button class="button" style="background-color: red;box-shadow: 0 9px darkred;" th:text="#{elenco.meccanici}">Elenco meccanici </button> </a>
         </div>
 
         <div>
              <a href="tipologiaIntervento">
-                 <button class="button" style="background-color: green; box-shadow: 0 9px darkgreen;"th:text="#{elenco.tipologiaInterventi}">Elenco tipologia Interventi</button></a>
+                 <button class="button" style="background-color: red; box-shadow: 0 9px darkred;"th:text="#{elenco.tipologiaInterventi}">Elenco tipologia Interventi</button></a>
         </div>
 
         <div>
             <a href="interventi">
-                 <button class="button" style="background-color: deepskyblue; box-shadow: 0 9px dodgerblue;"th:text="#{elenco.interventi}"> Elenco interventi</button></a>
+                 <button class="button" style="background-color: red; box-shadow: 0 9px darkred;"th:text="#{elenco.interventi}"> Elenco interventi</button></a>
         </div>
          <div>
             <div>
-            <a href="/addPrenotazione"><button class="button" style="background-color: green; box-shadow: 0 9px darkgreen;"th:text="#{prenotazione}">Prenota</button></a>
+            <a href="/addPrenotazione"><button class="button" style="background-color: red; box-shadow: 0 9px darkred;"th:text="#{prenotazione}">Prenota</button></a>
         </div>
          <div>
             <div>
-            <a href="/prenotazioni"><button class="button" style="background-color: green; box-shadow: 0 9px darkgreen;"th:text="#{elenco.prenotazioni}">Le mie prenotazioni</button></a>
+            <a href="/prenotazioni"><button class="button" style="background-color: red; box-shadow: 0 9px darkred;"th:text="#{elenco.prenotazioni}">Le mie prenotazioni</button></a>
         </div>
         </div>
         <div>
