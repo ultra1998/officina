@@ -3,6 +3,8 @@ package it.uniroma3.siw.spring.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.spring.controller.validator.MeccanicoValidator;
+import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.Intervento;
 import it.uniroma3.siw.spring.model.Meccanico;
 import it.uniroma3.siw.spring.service.MeccanicoService;
@@ -41,6 +44,9 @@ public class MeccanicoController {
     	Meccanico m=this.meccanicoService.meccanicoPerId(id);
     	model.addAttribute("meccanico", m);
     	model.addAttribute("interventiMeccanico",m.getInterventi());
+    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	Credentials credentials = this.meccanicoService.getCredentialsService().getCredentials(userDetails.getUsername());
+    	model.addAttribute("credentials", credentials);
     	return "meccanico.html";
     }
 

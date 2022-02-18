@@ -31,14 +31,24 @@
             <a href="interventi">
                  <button class="button" style="background-color: red; box-shadow: 0 9px darkred;"th:text="#{elenco.interventi}"> Elenco interventi</button></a>
         </div>
-         <div>
-            <div>
-            <a href="/addPrenotazione"><button class="button" style="background-color: red; box-shadow: 0 9px darkred;"th:text="#{prenotazione}">Prenota</button></a>
-        </div>
-         <div>
-            <div>
-            <a href="/prenotazioni"><button class="button" style="background-color: red; box-shadow: 0 9px darkred;"th:text="#{elenco.prenotazioni}">Le mie prenotazioni</button></a>
-        </div>
+        <div><form th:if="${credentials.role == 'DEFAULT'}" th:action="@{'/default/addPrenotazione'}"
+            method="GET">
+         <button class="button"  type="submit" style="background-color:red ;box-shadow:0 9px darkred;" th:text="#{prenotazione}"></button>
+         </form>
+    </div>
+     <div>
+        
+    <div><form th:if="${credentials.role == 'DEFAULT'}" th:action="@{'/default/prenotazioni'}"
+            method="GET">
+         <button class="button" type="submit" style="background-color:red ;box-shadow:0 9px darkred;"th:text="#{elenco.prenotazioni}"></button>
+         </form>
+    </div>
+    
+    <div><form th:if="${credentials.role == 'ADMIN'}" th:action="@{'/admin/tuttePrenotazioni'}"
+            method="GET">
+         <button class="button" type="submit" style="background-color:red ;box-shadow:0 9px darkred;" th:text="#{tutte.prenotazioni}"></button>
+         </form>
+    </div>
         </div>
         <div>
            <a th:href="@{/logout}"> <button class="button" style="background-color: whitesmoke; box-shadow: 0 9px lightgrey;"> Logout</button></a>

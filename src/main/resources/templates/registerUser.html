@@ -41,7 +41,7 @@
                 </tr>
                 <tr class="input-div">
                     <td class="campo-form">Cognome</td>
-                    <td><input type="text" placeholder="cognome" required th:field="${user.cognome}" /></td>
+                    <td><input type="text" placeholder="cognome" required th:field="${user.cognome}"/></td>
                     <td th:if="${#fields.hasErrors('user.cognome')}" th:errors="${user.cognome}" th:style="'color:red'">
                     </td>
                 </tr>

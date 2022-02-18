@@ -18,7 +18,7 @@
 		<div style="text-align: right;margin-right: 35%;">
 			<div>
 				<span class="campo-form">Nome:</span>
-				<span><input type="text" th:field="*{nome}" /></span>
+				<span><input type="text" th:field="*{nome}" required /></span>
 				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 			</div>
 			<div>
