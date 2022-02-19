@@ -1,12 +1,5 @@
 package it.uniroma3.siw.spring.model;
 
-
-
-
-
-
-
-
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -17,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Entity

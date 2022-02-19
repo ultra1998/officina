@@ -12,16 +12,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import it.uniroma3.siw.spring.controller.validator.PrenotazioneValidator;
 import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.Intervento;
 import it.uniroma3.siw.spring.model.Meccanico;
 import it.uniroma3.siw.spring.model.Prenotazione;
-import it.uniroma3.siw.spring.model.TipologiaIntervento;
-import it.uniroma3.siw.spring.repository.MeccanicoRepository;
-import it.uniroma3.siw.spring.service.MeccanicoService;
 import it.uniroma3.siw.spring.service.PrenotazioneService;
 
 @Controller
@@ -92,7 +87,7 @@ public class PrenotazioneController {
     @RequestMapping(value = "/admin/tuttePrenotazioni", method = RequestMethod.GET)
     public String gettuttePrenotazioni(Model model) {
     		model.addAttribute("prenotazioni", this.prenotazioneService.tutti());
-    		return "tuttePrenotazioni.html";
+    		return "prenotazioniElenco.html";
     }
     
     @RequestMapping(value = "/prenotazione", method = RequestMethod.POST)

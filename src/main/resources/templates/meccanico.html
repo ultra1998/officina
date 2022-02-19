@@ -12,7 +12,7 @@
 	</nav>
 
 	<div th:if="${meccanico}" th:object="${meccanico}" style="display: flex; justify-content: center;">
-		  <div class="box" style="display: flex;width: 400px;background-color: lightgrey">
+		  <div class="box" style="display: flex;width: 400px;background-color: yellow">
 			<div class="info">
 			<h1> Il meccanico: </h1>
 				Nome:<span th:text="*{nome}">qui-va-nome</span><br>
@@ -20,7 +20,7 @@
 				Recapito:<span th:text="*{recapito}">qui-va-recapito</span><br>
 			</div>
 		</div>
-		<div class="box" style="width: 400px;background-color: powderblue;">
+		<div class="box" style="width: 400px;background-color: yellow;">
 			<h1>I suoi interventi:</h1>
 			    <ul>
 					<li th:each="intervento : ${interventiMeccanico}">

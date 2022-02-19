@@ -1,7 +1,5 @@
 package it.uniroma3.siw.spring.repository;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;

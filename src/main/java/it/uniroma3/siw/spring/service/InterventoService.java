@@ -1,7 +1,5 @@
 package it.uniroma3.siw.spring.service;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

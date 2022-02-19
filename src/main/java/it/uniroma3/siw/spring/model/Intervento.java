@@ -1,7 +1,5 @@
 package it.uniroma3.siw.spring.model;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
