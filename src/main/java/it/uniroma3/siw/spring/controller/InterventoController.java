@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.controller;
 
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import it.uniroma3.siw.spring.controller.validator.InterventoValidator;
 import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.Intervento;
+import it.uniroma3.siw.spring.model.Prenotazione;
 import it.uniroma3.siw.spring.service.InterventoService;
 
 @Controller
@@ -69,10 +70,28 @@ public class InterventoController {
     
     @RequestMapping(value = "/admin/eliminaIntervento/{id}", method = RequestMethod.POST)
     public String eliminaIntervento(Model model, @PathVariable("id") Long idIntervento) {
-    		
     		Intervento i=interventoService.interventoPerId(idIntervento);
+    		List<Prenotazione> prenotazioni=interventoService.getPrenotazioniIntervento(i);
+    		for(Prenotazione p: prenotazioni) {
+    			interventoService.getPrenotazioneService().eliminaPrenotazione(p);
+    		}
     		interventoService.eliminaIntervento(i);
     		model.addAttribute("intervento", this.interventoService.tutti());
     		return "interventi.html";
-    }
-}
+    }   
+    
+
+    @RequestMapping(value = "/admin/intervento/{id}", method = RequestMethod.POST)
+    public String modificaIntervento(@ModelAttribute("intervento") Intervento intervento, Model model,BindingResult bindingResult, @PathVariable("id") Long Id) {
+     intervento.setId(Id);
+     intervento.setTipologiaIntervento(interventoService.interventoPerId(Id).getTipologiaIntervento());
+     interventoService.inserisci(intervento);
+     intervento=interventoService.interventoPerId(Id);
+     model.addAttribute("intervento", intervento);
+    	model.addAttribute("meccanico",intervento.getMeccanico());
+    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	Credentials credentials = this.interventoService.getCredentialsService().getCredentials(userDetails.getUsername());
+    	model.addAttribute("credentials", credentials);
+    	return "intervento.html";
+         }
+ }

@@ -13,7 +13,7 @@ import it.uniroma3.siw.spring.model.User;
 public class UserValidator implements Validator {
 
     final Integer MAX_NAME_LENGTH = 100;
-    final Integer MIN_NAME_LENGTH = 2;
+    final Integer MIN_NAME_LENGTH = 4;
 
     @Override
     public void validate(Object o, Errors errors) {

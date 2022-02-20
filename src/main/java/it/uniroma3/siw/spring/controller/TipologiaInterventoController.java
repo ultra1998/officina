@@ -27,7 +27,6 @@ public class TipologiaInterventoController {
 	@Autowired
 	private TipologiaInterventoService tipologiaInterventoService;
 	
-	
     @Autowired
     private TipologiaInterventoValidator tipologiaInterventoValidator;
     
@@ -48,7 +47,6 @@ public class TipologiaInterventoController {
     	model.addAttribute("intervento", new Intervento());
     	model.addAttribute("interventi",tipologiaInterventoService.getInterventoService().getInterventiFiltered());
     	model.addAttribute("interventiTipologiaIntervento",t.getInterventi());
-   
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = this.tipologiaInterventoService.getCredentialsService().getCredentials(userDetails.getUsername());
     	model.addAttribute("credentials", credentials);
@@ -76,7 +74,6 @@ public class TipologiaInterventoController {
     @RequestMapping(value = "/admin/addInterventoATipologiaIntervento/{id}", method = RequestMethod.POST)
     public String aggiungiIntervento(@RequestParam("intervento") Long idIntervento, 
     									Model model, @PathVariable("id") Long idTipologiaIntervento) {
-    	
     	Intervento i=tipologiaInterventoService.getInterventoService().interventoPerId(idIntervento);
     	TipologiaIntervento t = this.tipologiaInterventoService.tipologiaInterventoPerId(idTipologiaIntervento);
     	i.setTipologiaIntervento(t);
@@ -84,7 +81,6 @@ public class TipologiaInterventoController {
     	model.addAttribute("tipologiaIntervento", this.tipologiaInterventoService.tipologiaInterventoPerId(idTipologiaIntervento));
     	model.addAttribute("interventi",tipologiaInterventoService.getInterventoService().getInterventiFiltered());
     	model.addAttribute("interventiTipologiaIntervento",t.getInterventi());
-    	
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = this.tipologiaInterventoService.getCredentialsService().getCredentials(userDetails.getUsername());
     	model.addAttribute("credentials", credentials);
@@ -110,7 +106,6 @@ public class TipologiaInterventoController {
     
     @RequestMapping(value = "/admin/eliminaTipologiaIntervento/{id}", method = RequestMethod.POST)
     public String eliminaTipologiaIntervento(Model model, @PathVariable("id") Long idTipologiaIntervento) {
-    		
     		TipologiaIntervento t=tipologiaInterventoService.tipologiaInterventoPerId(idTipologiaIntervento);
     		tipologiaInterventoService.eliminaTipologiaIntervento(t);
     		model.addAttribute("tipologiaInterventi", this.tipologiaInterventoService.tutti());

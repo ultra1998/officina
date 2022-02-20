@@ -31,6 +31,7 @@ public class TipologiaInterventoService {
 	public InterventoService getInterventoService() {
 		return interventoService;
 	}
+	
 
 	@Transactional
 	public TipologiaIntervento inserisci(TipologiaIntervento tipologiaIntervento) {

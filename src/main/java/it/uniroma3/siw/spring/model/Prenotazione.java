@@ -35,11 +35,6 @@ public class Prenotazione {
 	@ManyToOne                              
 	private Intervento intervento;
 	
-
-	
-	public Meccanico getMeccanico() {
-		return meccanico;
-	}
 	
 	public Date getDataPrenotazione() {
 		return dataPrenotazione;
@@ -53,6 +48,10 @@ public class Prenotazione {
 	public void setOraPrenotazione(int oraPrenotazione) {
 		this.oraPrenotazione = oraPrenotazione;
 	}
+	public Meccanico getMeccanico() {
+		return meccanico;
+	}
+	
 	public void setMeccanico(Meccanico meccanico) {
 		this.meccanico = meccanico;
 	}

@@ -40,7 +40,6 @@ public class PrenotazioneController {
     
     @RequestMapping(value = "/prenotazione/{id}", method = RequestMethod.GET)
     public String getPrenotazione(@PathVariable("id") Long id, Model model) {
-    	
     	Prenotazione p=prenotazioneService.prenotazionePerId(id);
     	model.addAttribute("prenotazione", p);
     	model.addAttribute("intervento",p.getIntervento());
@@ -51,11 +50,9 @@ public class PrenotazioneController {
         	model.addAttribute("prenotazione",p);
         	model.addAttribute("intervento",p.getIntervento());
         	model.addAttribute("credentials", credentials);
-        	
         	return "prenotazione.html";
         }
         else
-        
     	return "error.html";
     }   
     
@@ -79,7 +76,6 @@ public class PrenotazioneController {
     		model.addAttribute("prenotazioni", this.prenotazioneService.prenotazioniPerUser(credentials.getUser()));
         	model.addAttribute("credentials", credentials);
         	model.addAttribute("prenotazione", new Prenotazione());
-            
     		return "prenotazioni.html";
     }
     
@@ -96,9 +92,7 @@ public class PrenotazioneController {
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = prenotazioneService.getCredentialsService().getCredentials(userDetails.getUsername());
     	model.addAttribute("credentials", credentials);
-    	
     	this.prenotazioneValidator.validate(prenotazione, bindingResult);
-  
     	if (!bindingResult.hasErrors()) {
     		if(prenotazione.getOraPrenotazione()> 8 && prenotazione.getOraPrenotazione()< 19) {      	
         	Meccanico m= prenotazione.getIntervento().getMeccanico();
@@ -129,7 +123,6 @@ public class PrenotazioneController {
     		Prenotazione p=prenotazioneService.prenotazionePerId(idPrenotazione);
     		prenotazioneService.eliminaPrenotazione(p);
     		model.addAttribute("Prenotazioni", this.prenotazioneService.tutti());
-    		
     		return "prenotazioni.html";
     }
     

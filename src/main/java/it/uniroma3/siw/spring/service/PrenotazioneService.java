@@ -29,6 +29,26 @@ public class PrenotazioneService {
 	@Autowired
 	private CredentialsService credentialsService;
 	
+	
+	public MeccanicoService getMeccanicoService() {
+		return meccanicoService;
+	}
+
+	public void setMeccanicoService(MeccanicoService meccanicoService) {
+		this.meccanicoService = meccanicoService;
+	}
+
+	public CredentialsService getCredentialsService() {
+		return credentialsService;
+	}
+
+	public void setCredentialsService(CredentialsService credentialsService) {
+		this.credentialsService = credentialsService;
+	}
+
+	public InterventoService getInterventoService() {
+		return interventoService;
+	}
 	@Transactional
 	public Prenotazione inserisci(Prenotazione prenotazione) {
 		return prenotazioneRepository.save(prenotazione);
@@ -82,26 +102,6 @@ public class PrenotazioneService {
 	public void eliminaPrenotazione(Prenotazione p) {
 		prenotazioneRepository.delete(p);
 	}
+
 	
-	 
-
-	public MeccanicoService getMeccanicoService() {
-		return meccanicoService;
-	}
-
-	public void setMeccanicoService(MeccanicoService meccanicoService) {
-		this.meccanicoService = meccanicoService;
-	}
-
-	public CredentialsService getCredentialsService() {
-		return credentialsService;
-	}
-
-	public void setCredentialsService(CredentialsService credentialsService) {
-		this.credentialsService = credentialsService;
-	}
-
-	public InterventoService getInterventoService() {
-		return interventoService;
-	}
 }

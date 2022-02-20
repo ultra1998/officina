@@ -24,9 +24,6 @@ public class Meccanico {
 	@Column(nullable = false)
 	private String cognome;
 	
-	@Column(nullable=false)
-	private String recapito;
-	
 	@OneToMany(mappedBy="meccanico")
 	private List<Intervento> interventi;
 	
@@ -57,14 +54,6 @@ public class Meccanico {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	
-	public String getRecapito() {
-		return recapito;
-	}
-
-	public void setRecapito(String recapito) {
-		this.recapito = recapito;
 	}
 	
 	public List<Intervento> getInterventi() {
@@ -110,11 +99,6 @@ public class Meccanico {
 			if (other.nome != null)
 				return false;
 		} else if (!nome.equals(other.nome))
-			return false;
-		if (recapito == null) {
-			if (other.recapito != null)
-				return false;
-		} else if (!recapito.equals(other.recapito))
 			return false;
 		return true;
 	}

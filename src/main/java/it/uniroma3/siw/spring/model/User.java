@@ -24,6 +24,8 @@ public class User {
 	private String nome;
 	@Column
 	private String cognome;
+	@Column
+	private String recapito;
 
 	@OneToMany(mappedBy="cliente")
 	private List<Prenotazione> prenotazioni;
@@ -58,6 +60,14 @@ public class User {
 
 	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
 		this.prenotazioni = prenotazioni;
+	}
+
+	public String getRecapito() {
+		return recapito;
+	}
+
+	public void setRecapito(String recapito) {
+		this.recapito = recapito;
 	}
 
 	

@@ -1,5 +1,7 @@
 package it.uniroma3.siw.spring.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.spring.controller.validator.MeccanicoValidator;
 import it.uniroma3.siw.spring.model.Credentials;
+import it.uniroma3.siw.spring.model.Intervento;
 import it.uniroma3.siw.spring.model.Meccanico;
+import it.uniroma3.siw.spring.model.Prenotazione;
 import it.uniroma3.siw.spring.service.MeccanicoService;
 
 
@@ -67,16 +71,34 @@ public class MeccanicoController {
         return "meccanicoForm.html";
     }
     
-    
-
     @RequestMapping(value = "/admin/eliminaMeccanico/{id}", method = RequestMethod.POST)
     public String eliminaMeccanico(Model model, @PathVariable("id") Long idMeccanico) {
-    		
     		Meccanico m=meccanicoService.meccanicoPerId(idMeccanico);
+    		List<Prenotazione> prenotazioni=meccanicoService.getPrenotazioniMeccanico(m);
+    		for(Prenotazione p: prenotazioni) {
+    			meccanicoService.getPrenotazioneService().eliminaPrenotazione(p);
+    		}
+    		List<Intervento> interventi= meccanicoService.getInterventiMeccanico(m);
+    		for(Intervento i: interventi) {
+    			meccanicoService.getInterventoService().eliminaIntervento(i);	
+    		}
     		meccanicoService.eliminaMeccanico(m);
     		model.addAttribute("meccanico", this.meccanicoService.tutti());
     		return "meccanici.html";
     }
     
-    
+    @RequestMapping(value= "/admin/meccanico/{id}", method = RequestMethod.POST)
+    public String modificaMeccanico(@ModelAttribute("intervento") Meccanico meccanico, Model model , BindingResult bindingResult, @PathVariable("id") Long id) {
+    	meccanico.setId(id);
+    	Meccanico m= meccanicoService.meccanicoPerId(id);
+    	meccanico.setInterventi(m.getInterventi());
+    	meccanicoService.inserisci(meccanico);
+    	model.addAttribute("meccanico", meccanico);
+    	model.addAttribute("interventiMeccanico", meccanico.getInterventi());
+    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	Credentials credentials = this.meccanicoService.getCredentialsService().getCredentials(userDetails.getUsername());
+    	model.addAttribute("credentials", credentials);
+    	return "meccanico.html";
+    }
+       
 }
