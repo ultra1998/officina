@@ -1,0 +1,36 @@
+Officina
+SIW Project 
+ 
+1. Contesto di riferimento e obiettivi
+Contesto
+Si vuole realizzare un sistema informativo su Web per la prenotazione degli interventi di una piccola officina, oltre agli utenti occasionali, due tipologie di attori interagiscono con il sistema: i clienti e l'amministrazione.
+Un cliente può svolgere le seguenti operazioni: 
+• Consultazione tipologie di interventi offerti dalla officina
+• Consultazione degli interventi effettuati presso l'officina
+L'amministrazione può svolgere le seguenti operazioni: 
+• Inserimento di una tipologia di intervento
+• Inserimento di un intervento
+• Inserimento di un cliente 
+• Aggiornamento dati di un cliente
+Per ogni tipologia di esame sono di interesse un nome, un codice, una descrizione, un costo.
+Per ogni intervento è necessario memorizzare, oltre al cliente, la data di prenotazione (con data e ora in cui è stata effettuata la prenotazione), la data in cui è stato effettuato l’intervento, il nome del meccanico che ha condotto l’intervento.
+Per ogni meccanico è necessario gestire: nome, cognome e lista interventi 
+2. Obiettivi
+L’obiettivo è creare un sistema informativo su Web che contempli i seguenti casi d’uso che seguono
+3. Casi D’Uso
+Caso d'uso UC1: crea intervento (prenotazione).
+Attore primario: amministrazione. Si presuppone che l’utente principale sia quello registrato con appositi permessi di “amministrazione”, registrato con un apposito ruolo su DB in grado di effettuare operazioni di creazione del dato come quello dell’intervento.
+Scenario principale di successo: E’ altresì necessario ovviamente loggarsi al sistema con le proprie credenziali che verranno riconosciute dal sistema come utenza di amministrazione. L’amministratore (o amministrazione) crea un intervento dall’apposita voce di menu, successivamente imposta una tipologia all’intervento creato, il meccanico, il cliente e la data in cui è stato effettuato l’intervento.
+
+Caso d'uso UC2: inserimento tipologia di intervento.
+Attore primario: amministrazione. Si presuppone che l’utente principale sia quello registrato con appositi permessi di “amministrazione”, registrato con un apposito ruolo su DB in grado di effettuare operazioni di creazione del dato come quello dell’intervento.
+Scenario principale di successo:
+L'amministratore inserisce una nuova tipologia di intervento indicando nome, descrizione,codice e prezzo. Il sistema registra la tipologia di esame e mostra la form per l'inserimento dei requisiti. L'amministratore inserisce il requisito(se presente) altrimenti termina l'operazione I punti precedenti vengono ripetuti fino a che necessario.
+
+Caso d'uso UC3: interventi effettuati da un meccanico.
+Attore primario: amministrazione. Si presuppone che l’utente principale sia quello registrato con appositi permessi di “amministrazione”, registrato con un apposito ruolo su DB in grado di effettuare operazioni di creazione del dato come quello dell’intervento.
+Scenario principale di successo: L’amministratore selezione dall’apposito menu nome e cognome di un meccanico. Il sistema mostra all’amministratore tutti gli interventi effettuati dal meccanico attraverso la selezione dello stesso, con il consueto link al nome: Il sistema mostra i dati del meccanico e in basso gli esami svolti dallo stesso.
+
+Caso d'uso UC4: inserimento meccanico. Attore primario: amministrazione. Si presuppone che l’utente principale sia quello registrato con appositi permessi di “amministrazione”, registrato con un apposito ruolo su DB in grado di effettuare operazioni di creazione del dato come quello dell’intervento.
+Scenario principale di successo: L'amministrazione seleziona la voce "inserisci meccanico" Il sistema mostra la form L'amministrazione inserisce nome, cognome.
+Il sistema registra il meccanico e mostra la lista di tutti i meccanici
