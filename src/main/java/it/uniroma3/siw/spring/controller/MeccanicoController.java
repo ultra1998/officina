@@ -86,19 +86,6 @@ public class MeccanicoController {
     		model.addAttribute("meccanico", this.meccanicoService.tutti());
     		return "meccanici.html";
     }
-    
-    @RequestMapping(value= "/admin/meccanico/{id}", method = RequestMethod.POST)
-    public String modificaMeccanico(@ModelAttribute("intervento") Meccanico meccanico, Model model , BindingResult bindingResult, @PathVariable("id") Long id) {
-    	meccanico.setId(id);
-    	Meccanico m= meccanicoService.meccanicoPerId(id);
-    	meccanico.setInterventi(m.getInterventi());
-    	meccanicoService.inserisci(meccanico);
-    	model.addAttribute("meccanico", meccanico);
-    	model.addAttribute("interventiMeccanico", meccanico.getInterventi());
-    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	Credentials credentials = this.meccanicoService.getCredentialsService().getCredentials(userDetails.getUsername());
-    	model.addAttribute("credentials", credentials);
-    	return "meccanico.html";
-    }
+ 
        
 }

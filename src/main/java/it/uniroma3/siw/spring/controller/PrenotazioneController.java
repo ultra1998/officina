@@ -126,6 +126,13 @@ public class PrenotazioneController {
     		return "prenotazioni.html";
     }
     
+    @RequestMapping(value="/modificaPrenotazione/{id}", method = RequestMethod.GET)
+    public String modificaPrenotazione(Model model,@PathVariable("id") Long id) {
+    	Prenotazione p= prenotazioneService.prenotazionePerId(id);
+    	model.addAttribute("prenotazione", p);
+    	model.addAttribute("interventi", prenotazioneService.getInterventoService().tutti());
+        return "modificaPrenotazioneForm.html";
+    	}  
     
     @RequestMapping(value = "/prenotazione/{id}", method = RequestMethod.POST)
     public String modificaPrenotazione(@ModelAttribute("prenotazione") Prenotazione prenotazione, Model model,BindingResult bindingResult, @PathVariable("id") Long Id) {
@@ -140,5 +147,7 @@ public class PrenotazioneController {
         model.addAttribute("clienti",prenotazione.getCliente());
     	model.addAttribute("credentials", credentials);
     	return "prenotazione.html";
-         }      
+     }  
+    
+    
 }

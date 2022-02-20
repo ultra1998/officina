@@ -111,5 +111,6 @@ public class TipologiaInterventoController {
     		model.addAttribute("tipologiaInterventi", this.tipologiaInterventoService.tutti());
     		return "tipologiaInterventi.html";
     }
+      
     
 }

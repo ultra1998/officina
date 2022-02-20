@@ -56,7 +56,6 @@ public class Intervento {
 		this.nome = nome;
 	}
 	
-	
 	public String getDescrizione() {
 		return descrizione;
 	}

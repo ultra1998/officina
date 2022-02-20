@@ -21,11 +21,17 @@
 			</div>
 	</div>
 	</div>
-		<div class="flex-container2">
+	<div class="flex-container2">
 		<div>
 			<form th:action="@{'/eliminaPrenotazione' + '/' + ${prenotazione.id}}"
 				method="POST">
 				<button class="sub-button" type="submit" th:text="#{elimina.prenotazione}"></button>
+			</form>
+		</div>
+		<div>
+			<form th:action="@{'/modificaPrenotazione' + '/' + ${prenotazione.id}}"
+				method="GET">
+				<button class="sub-button" type="submit" th:text="#{modifica.prenotazione}"></button>
 			</form>
 		</div>
 		<div><a href="/default"><button class="sub-button" style="margin-top: 19px;">Home</button></a></div>

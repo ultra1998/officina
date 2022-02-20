@@ -80,18 +80,5 @@ public class InterventoController {
     		return "interventi.html";
     }   
     
-
-    @RequestMapping(value = "/admin/intervento/{id}", method = RequestMethod.POST)
-    public String modificaIntervento(@ModelAttribute("intervento") Intervento intervento, Model model,BindingResult bindingResult, @PathVariable("id") Long Id) {
-     intervento.setId(Id);
-     intervento.setTipologiaIntervento(interventoService.interventoPerId(Id).getTipologiaIntervento());
-     interventoService.inserisci(intervento);
-     intervento=interventoService.interventoPerId(Id);
-     model.addAttribute("intervento", intervento);
-    	model.addAttribute("meccanico",intervento.getMeccanico());
-    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	Credentials credentials = this.interventoService.getCredentialsService().getCredentials(userDetails.getUsername());
-    	model.addAttribute("credentials", credentials);
-    	return "intervento.html";
-         }
+ 
  }
